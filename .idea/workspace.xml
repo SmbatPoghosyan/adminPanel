@@ -2,31 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54b878a1-ef96-4cd7-bed5-5d657132dba1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.npmignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/config/database.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/branch.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/file.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/playlist.controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/branch.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/file.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/playlist.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/branch.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/playlist.routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/files/beer.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/storage/files/e-sports.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/client/api/playlists.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/client/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/client/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/client/public/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/client/public/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/client/src/App/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/client/src/App/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/server/public/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/public/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/public/server.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +30,7 @@
     </entry>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
@@ -90,7 +68,9 @@
       <option name="presentableId" value="Default" />
       <updated>1562511510173</updated>
       <workItem from="1562511511433" duration="92000" />
-      <workItem from="1565091190191" duration="2107000" />
+      <workItem from="1565091190191" duration="2198000" />
+      <workItem from="1565093774383" duration="43000" />
+      <workItem from="1565093826685" duration="2341000" />
     </task>
     <servers />
   </component>
@@ -102,7 +82,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

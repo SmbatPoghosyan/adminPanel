@@ -6,6 +6,10 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
 const MongoClient = require("mongodb").MongoClient;
+const client = new MongoClient(process.env.URL,{ useNewUrlParser: true, useFindAndModify: false});
+client.connect(err => {
+  console.log(err);
+});
 const bodyParser = require("body-parser");
 const dbConfig = require("../config/database.config");
 const branches = require("../routes/branch.routes");
@@ -36,10 +40,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
 const port = process.env.PORT;
 
-mongoose.connect(dbConfig.url, {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
 app.get("/", (req, res) => {
   res.send("Hiiii");
 });
