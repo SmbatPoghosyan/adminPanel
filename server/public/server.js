@@ -6,9 +6,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
 const MongoClient = require("mongodb").MongoClient;
-const client = new MongoClient(process.env.URL,{ useNewUrlParser: true, useFindAndModify: false});
+const client = new MongoClient("mongodb+srv://asd:asdasd@cluster0-rdame.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true, useFindAndModify: false});
 client.connect(err => {
-  console.log(err);
+  alert(err);
 });
 const bodyParser = require("body-parser");
 const dbConfig = require("../config/database.config");
