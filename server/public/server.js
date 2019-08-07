@@ -5,11 +5,14 @@ const path = require("path");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
+mongoose.Promise = global.Promise;
 const MongoClient = require("mongodb").MongoClient;
 const client = new MongoClient(process.env.MONGODB_URI,{ useNewUrlParser: true});
 client.connect(err => {
 });
 const conn = mongoose.connection;
+mongoose.connection.once('open', () => { console.log('MongoDB Connected'); });
+mongoose.connection.on('error', (err) => { console.log('MongoDB connection error: ', err); });
 conn.on('error', console.error.bind(console, 'connection error:'));
 const bodyParser = require("body-parser");
 const dbConfig = require("../config/database.config");
