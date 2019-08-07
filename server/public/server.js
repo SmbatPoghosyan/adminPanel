@@ -45,7 +45,8 @@ conn.once('open', function() {
   app.get("/", (req, res) => {
     res.send("Hiiii");
   }); // we're connected!
+  app.listen(port, _ => console.log(`The server is listening on port ${port}`));
 });
 
 
-app.listen(port, _ => console.log(`The server is listening on port ${port}`));
+
