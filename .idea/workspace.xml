@@ -32,7 +32,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../adminnn" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
@@ -71,7 +71,7 @@
       <workItem from="1565091190191" duration="2198000" />
       <workItem from="1565093774383" duration="43000" />
       <workItem from="1565093826685" duration="4081000" />
-      <workItem from="1565163382009" duration="3643000" />
+      <workItem from="1565163382009" duration="4514000" />
     </task>
     <servers />
   </component>

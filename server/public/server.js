@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
 const MongoClient = require("mongodb").MongoClient;
-const client = new MongoClient("mongodb+srv://asd:asdasd@cluster0-rdame.mongodb.net/myDb?retryWrites=true&w=majority",{ useNewUrlParser: true});
+const client = new MongoClient("mongodb://asd:asdasd1@ds359847.mlab.com:59847/heroku_2s6c652p",{ useNewUrlParser: true});
 client.connect(err => {
 });
 const conn = mongoose.connection;
