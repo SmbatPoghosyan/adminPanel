@@ -2,6 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const FileSchema = Schema({
+        name: {
+          type: String,
+          required: true
+        },
+        type: {
+          type: String,
+          required: true
+        },
         url: {
             type: String,
             required: true
@@ -11,7 +19,7 @@ const FileSchema = Schema({
             required: true
         },
         screen: {
-            type: Number,
+            type: [Number],
             required: true
         },
         order: {

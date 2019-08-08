@@ -22,7 +22,7 @@ exports.create = (req, res) => {
             res.send({data, message: "You successfully create new branch!"});
         }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating the Note."
+            message: err.message || "Some error occurred while creating the Branch."
         });
     });
 };
@@ -34,7 +34,7 @@ exports.findAll = (req, res) => {
             res.send(branches);
         }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
+            message: err.message || "Some error occurred while retrieving branches."
         });
     });
 };
@@ -50,7 +50,7 @@ function asd(id){
             res.send(branches);
         }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
+            message: err.message || "Some error occurred while retrieving branches."
         });
     });
 }

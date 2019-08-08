@@ -39,6 +39,8 @@ exports.create = (req, res) => {
                     JSON.parse(req.body.files).forEach((item) => {
                         const file = new File({
                             url: item.url,
+                            name: item.name,
+                            type: item.type,
                             showTime: item.showTime,
                             screen: item.screen,
                             order: item.order,
@@ -161,6 +163,8 @@ exports.update = (req, res) => {
                     url: item.url,
                     showTime: item.showTime,
                     screen: item.screen,
+                    name: item.name,
+                    type: item.type,
                     order: item.order,
                     playlistId: playlist._id
                 });
