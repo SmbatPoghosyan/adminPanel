@@ -50,4 +50,3 @@ app.use(bodyParser.json());
 
   app.listen(port, _ => console.log(`The server is listening on port ${port}`));
 
-})()
