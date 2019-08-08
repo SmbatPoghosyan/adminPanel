@@ -32,20 +32,22 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, "../../storage")));
-app.use("/branches", branches);
-app.use("/playlists", playlists);
+  app.use(express.static(path.join(__dirname, "../../storage")));
+  app.use("/branches", branches);
+  app.use("/playlists", playlists);
 
-app.post("/upload", upload.single("file"), (req, res) => {
-  if (req.file) {
-    res.json(req.file);
-  } else throw "error";
-});
+  app.post("/upload", upload.single("file"), (req, res) => {
+    if (req.file) {
+      res.json(req.file);
+    } else throw "error";
+  });
 
-const port = process.env.PORT;
+  const port = process.env.PORT;
 
-app.get("/", (req, res) => {
-  res.send("Hiiii");
-});
+  app.get("/", (req, res) => {
+    res.send("Hiiii");
+  });
 
-app.listen(port, _ => console.log(`The server is listening on port ${port}`));
+  app.listen(port, _ => console.log(`The server is listening on port ${port}`));
+
+})()
