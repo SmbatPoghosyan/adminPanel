@@ -1,5 +1,6 @@
 const Branch = require('../models/branch.model.js');
 const Playlist = require('../models/playlist.model.js');
+const File = require('../models/file.model.js');
 
 // Create and Save a new Branch
 exports.create = (req, res) => {
@@ -124,7 +125,16 @@ exports.delete = (req, res) => {
                     message: "Branch not found with id " + req.params.branchId
                 });
             }
-            res.send({message: "Branch deleted successfully!"});
+            Playlist.find({branch_id: req.params.branchId}).then(playlists => {
+                if(playlists.length){
+                    playlists.forEach(pl => {
+                        File.deleteMany({ playlistId: pl._id }).then(()=>{
+                            Playlist.findByIdAndRemove(pl._id)
+                        })
+                    })
+                }
+                res.send({message: "Branch deleted successfully!"});
+            })
         }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({
