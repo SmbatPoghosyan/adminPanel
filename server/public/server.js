@@ -7,6 +7,7 @@ const cors = require("cors");
 const multer = require("multer");
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
 const conn = mongoose.connection;
+mongoose.set('useFindAndModify', false);
 mongoose.connection.once('open', () => { console.log('MongoDB Connected'); });
 mongoose.connection.on('error', (err) => { console.log('MongoDB connection error: ', err); });
 conn.on('error', console.error.bind(console, 'connection error:'));
