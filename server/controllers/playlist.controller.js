@@ -74,11 +74,12 @@ exports.create = (req, res) => {
 
 async function findBranchById(id, withFiles) {
     let data = [];
+    let branch = await Branch.findById(id);
     let playlists = await Playlist.find({ branch_id: id });
     if (withFiles) {
         for (let i = 0; i < playlists.length; i++) {
             let files = await File.find({ playlistId: playlists[i]._id });
-            await data.push({ playlist: playlists[i], files });
+            await data.push({ screens: branch.screens, playlist: playlists[i], files });
         }
     }
     data = withFiles ? data : playlists;
