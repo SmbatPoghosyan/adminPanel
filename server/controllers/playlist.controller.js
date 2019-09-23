@@ -147,8 +147,11 @@ exports.update = (req, res) => {
                     message: "Playlist not found with id " + req.params.playlistId
                 });
             }
-            File.deleteMany({ playlistId: req.params.playlistId }).then(files => {
-            })
+            File.deleteMany({ playlistId: req.params.playlistId }).then(res => {
+                    for(let i in res){
+                        console.log(`${i}`, res[i]);
+                    }
+                })
                 .catch(err => {
                     if (err.kind === 'ObjectId' || err.name === 'NotFound') {
                         return res.status(404).send({
@@ -169,9 +172,9 @@ exports.update = (req, res) => {
                     order: item.order,
                     playlistId: playlist._id
                 });
-
+                console.log("parsed file", file);
                 file.save()
-                    .then()
+                    .then((f) => {console.log("saved file", f)})
                     .catch(err => console.log(err))
             });
             res.send({ message: "You successfully update playlist!" });
