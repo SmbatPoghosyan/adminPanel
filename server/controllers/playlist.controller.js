@@ -147,6 +147,22 @@ exports.update = (req, res) => {
                 });
             }
             File.deleteMany({ playlistId: req.params.playlistId }).then(files => {
+                JSON.parse(req.body.files).forEach((item) => {
+                    const file = new File({
+                        url: item.url,
+                        showTime: item.showTime,
+                        screen: item.screen,
+                        name: item.name,
+                        type: item.type,
+                        order: item.order,
+                        playlistId: playlist._id
+                    });
+
+                    file.save()
+                        .then()
+                        .catch(err => console.log(err))
+                });
+                res.send({ message: "You successfully update playlist!" });
             })
                 .catch(err => {
                     if (err.kind === 'ObjectId' || err.name === 'NotFound') {
@@ -158,22 +174,7 @@ exports.update = (req, res) => {
                         message: "Could not delete playlist's files"
                     });
                 });
-            JSON.parse(req.body.files).forEach((item) => {
-                const file = new File({
-                    url: item.url,
-                    showTime: item.showTime,
-                    screen: item.screen,
-                    name: item.name,
-                    type: item.type,
-                    order: item.order,
-                    playlistId: playlist._id
-                });
 
-                file.save()
-                    .then()
-                    .catch(err => console.log(err))
-            });
-            res.send({ message: "You successfully update playlist!" });
         }).catch(err => {
             if (err.kind === 'ObjectId') {
                 return res.status(404).send({
