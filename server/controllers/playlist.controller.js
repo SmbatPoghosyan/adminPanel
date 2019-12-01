@@ -25,14 +25,19 @@ exports.create = (req, res) => {
                 });
             }
 
-            const playlist = new Playlist({
+            const objToSave = {
                 name: req.body.name,
                 endDate: req.body.endDate,
                 startDate: req.body.startDate,
                 currency: req.body.currency,
-                ticker: req.body.ticker,
                 branch_id: req.params.branchId,
-            });
+            };
+
+            if(req.body.ticker) {
+                objToSave["ticker"] = req.body.ticker
+            }
+
+            const playlist = new Playlist(objToSave);
             playlist.save()
                 .then(data => {
                     console.log(data)
@@ -107,7 +112,6 @@ exports.findBranchePlaylists = async function (req, res) {
 
 // Find a single playlist with a playlistId
 exports.findOne = async function (req, res) {
-    let data = [];
     let branch = await Branch.findById(req.params.branchId);
     if (!branch) {
         return res.status(404).send({
@@ -132,15 +136,21 @@ exports.update = (req, res) => {
             message: "Playlist name can not be empty"
         });
     }
-
-    // Find playlist and update it with the request body
-    Playlist.findByIdAndUpdate(req.params.playlistId, {
+    const objToUpdate = {
         name: req.body.name,
         endDate: req.body.endDate,
         startDate: req.body.startDate,
         currency: req.body.currency,
-        ticker: req.body.ticker,
-    })
+    };
+
+    if(req.body.ticker) {
+        objToUpdate["ticker"] = req.body.ticker
+    } else{
+        objToUpdate["ticker"] = null;
+    }
+
+    // Find playlist and update it with the request body
+    Playlist.findByIdAndUpdate(req.params.playlistId, objToUpdate)
         .then(playlist => {
             if (!playlist) {
                 return res.status(404).send({
