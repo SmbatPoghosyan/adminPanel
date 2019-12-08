@@ -19,7 +19,7 @@ const PlaylistSchema = Schema({
         required: true
     },
     ticker: {
-        type: String
+        type: Object
     },
     branch_id: { type: Schema.Types.ObjectId, ref: 'Branch' },
 }, {

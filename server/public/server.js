@@ -5,7 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true });
 const conn = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 mongoose.connection.once('open', () => { console.log('MongoDB Connected'); });
