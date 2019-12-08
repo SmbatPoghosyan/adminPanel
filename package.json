@@ -4,7 +4,7 @@
   "description": "That's my admin project.",
   "main": "server/public/server.js",
   "scripts": {
-    "server": "start http://localhost:8000 && nodemon ./app/server/public/server.js localhost 8000",
+    "server": "nodemon ./server/public/server.js",
     "start": "npm run server"
   },
   "engines": {

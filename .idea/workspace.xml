@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="54b878a1-ef96-4cd7-bed5-5d657132dba1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/playlist.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/playlist.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,9 +29,15 @@
       </profile-state>
     </entry>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="8.13.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -46,15 +52,15 @@
       <recent name="C:\xampp\htdocs\adminPanel" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -80,6 +86,7 @@
       <workItem from="1567580598658" duration="599000" />
       <workItem from="1567664266911" duration="1266000" />
       <workItem from="1569932797622" duration="153000" />
+      <workItem from="1575827014707" duration="707000" />
     </task>
     <servers />
   </component>
@@ -98,5 +105,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1259" height="204" key="GridCell.Tab.0.bottom" timestamp="1575827135255">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1259" height="204" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1575827135255" />
+    <state width="1259" height="204" key="GridCell.Tab.0.center" timestamp="1575827135254">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1259" height="204" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1575827135254" />
+    <state width="1259" height="204" key="GridCell.Tab.0.left" timestamp="1575827135253">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1259" height="204" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1575827135253" />
+    <state width="1259" height="204" key="GridCell.Tab.0.right" timestamp="1575827135254">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1259" height="204" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1575827135254" />
   </component>
 </project>
