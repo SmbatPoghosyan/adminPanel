@@ -32,7 +32,7 @@ app.use(bodyParser.json());
   app.use(express.static(path.join(__dirname, "../../storage")));
   app.use("/branches", branches);
   app.use("/playlists", playlists);
-  app.use("/user", user);
+  app.use("/users", user);
 
   app.post("/upload", upload.single("file"), (req, res) => {
     if (req.file) {

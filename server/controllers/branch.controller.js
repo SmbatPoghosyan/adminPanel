@@ -4,7 +4,7 @@ const File = require('../models/file.model.js');
 
 // Create and Save a new Branch
 exports.create = (req, res) => {
-    if(req.body.token && req.body.token === process.env.token){
+    if(req.body.token && req.body.token === process.env.SUPERADMIN_TOKEN){
         if(!req.body.name) {
             return res.status(400).send({
                 message: "Branch name can not be empty"
@@ -37,18 +37,12 @@ exports.create = (req, res) => {
 
 // Retrieve and return all branches from the database.
 exports.findAll = (req, res) => {
-    if (req.body.token && req.body.token === process.env.token) {
         Branch.find().then(branches => {
             res.send(branches);
         }).catch(err => {res.status(500).send({
                 message: err.message || "Some error occurred while retrieving branches."
             });
         });
-    } else {
-        return res.status(401).send({
-            message: "You don’t have permission"
-        });
-    }
 };
 
 function asd(id){
@@ -77,7 +71,6 @@ async function findBranchById(id){
 
 // Find a single branch with a branchId
 exports.findOne =  (req, res) => {
-    if (req.body.token && req.body.token === process.env.token) {
         findBranchById(req.params.branchId)
         .then(data => {
             res.send(data)
@@ -92,16 +85,11 @@ exports.findOne =  (req, res) => {
                 message: "Error updating branch with id " + req.params.branchId
             });
         })
-    } else {
-        return res.status(401).send({
-            message: "You don’t have permission"
-        });
-    }
 };
 
 // Update a branch identified by the branchId in the request
 exports.update = (req, res) => {
-    if (req.body.token && req.body.token === process.env.token) {
+    if (req.body.token && req.body.token === process.env.SUPERADMIN_TOKEN) {
         // Validate Request
         if(!req.body.name) {
             return res.status(400).send({
@@ -141,7 +129,7 @@ exports.update = (req, res) => {
 
 // Delete a branch with the specified branchId in the request
 exports.delete = (req, res) => {
-    if (req.body.token && req.body.token === process.env.token) {
+    if (req.query.token && req.query.token === process.env.SUPERADMIN_TOKEN) {
 
 
         Branch.findByIdAndRemove(req.params.branchId)
