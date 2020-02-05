@@ -14,6 +14,7 @@ conn.on('error', console.error.bind(console, 'connection error:'));
 const bodyParser = require("body-parser");
 const branches = require("../routes/branch.routes");
 const playlists = require("../routes/playlist.routes");
+const user = require("../routes/user.route");
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, __dirname + "/../../storage/files");
@@ -31,6 +32,7 @@ app.use(bodyParser.json());
   app.use(express.static(path.join(__dirname, "../../storage")));
   app.use("/branches", branches);
   app.use("/playlists", playlists);
+  app.use("/user", user);
 
   app.post("/upload", upload.single("file"), (req, res) => {
     if (req.file) {
