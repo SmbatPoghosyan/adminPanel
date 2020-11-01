@@ -40,10 +40,12 @@ exports.create = (req, res) => {
             const playlist = new Playlist(objToSave);
             playlist.save()
                 .then(data => {
+                    debugger;
                     JSON.parse(req.body.files).forEach((item) => {
                         const file = new File({
                             url: item.url,
                             name: item.name,
+                            size: item.size,
                             type: item.type,
                             showTime: item.showTime,
                             screen: item.screen,
@@ -163,6 +165,7 @@ exports.update = (req, res) => {
                         showTime: item.showTime,
                         screen: item.screen,
                         name: item.name,
+                        size: item.size,
                         type: item.type,
                         order: item.order,
                         playlistId: playlist._id
