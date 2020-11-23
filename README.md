@@ -31,3 +31,22 @@ SUPERADMIN_TOKEN=123123123
 
 ###Entry file:
 server/public/server.js 
+
+##Database Commands
+Open MongoDB shell
+
+###Commands
+show dbs - Print a list of all databases on the server.
+
+use "db" - Switch current database to "db" // example:  use ledDb
+
+show collections - Print a list of all collections for current database.
+
+show users - Print a list of users for current database.
+
+db.users.insertOne() - Insert a new user into the collection. // example db.users.insertOne({login: "superadmin", password: "asdasd"})
+
+db.users.updateOne() - Update a single user.
+
+example:   
+db.users.updateOne({ "login" : "superadmin" }, { $set: { "password" : "AsdAsd123" } });
