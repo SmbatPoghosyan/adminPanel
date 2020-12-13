@@ -16,7 +16,7 @@ exports.login = (req, res) => {
             }
         })
     } else {
-        res.send('Please enter Username and Password!');
+        res.send({message: 'Please enter Username and Password!'});
         res.end();
     }
 };
@@ -79,11 +79,11 @@ exports.update = async (req, res) => {
             const user = await User.findById(req.params.id);
             console.log(user);
             if(user.password !== req.body.oldpassword) {
-                return res.status(400).send("Wrong old password.");
+                return res.status(400).send({message: "Wrong old password."});
             }
             data.password = req.body.password;
         }  else {
-            return res.status(400).send("Old password is required to change password.");
+            return res.status(400).send({message: "Old password is required to change password."});
         }
     }
 
