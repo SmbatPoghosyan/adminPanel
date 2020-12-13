@@ -1,6 +1,5 @@
 const User = require('../models/user.model.js');
 
-// Create and Save a new Branch
 exports.login = (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -22,6 +21,115 @@ exports.login = (req, res) => {
     }
 };
 
+exports.list = (req, res) => {
+    User.find().then(data => {
+        return res.send({data, success: true});
+    })
+};
+
+exports.create = (req, res) => {
+    console.log(req.body);
+    if(req.body.token && req.body.token === process.env.SUPERADMIN_TOKEN){
+        if(!req.body.username) {
+            return res.status(400).send({
+                message: "Username can not be empty"
+            });
+        }
+        if(!req.body.password) {
+            return res.status(400).send({
+                message: "Password can not be empty"
+            });
+        }
+        // const playlist = new
+        // Create a Branch
+        const user = new User({
+            username: req.body.username,
+            password: req.body.password,
+        });
+
+        // Save Branch in the database
+        user.save()
+          .then(data => {
+              res.send({data, message: "You successfully create new user!"});
+          }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while creating the user."
+            });
+        });
+    } else {
+        return res.status(401).send({
+            message: "You don’t have permission"
+        });
+    }
+};
+
+exports.update = (req, res) => {
+    if (req.body.token && req.body.token === process.env.SUPERADMIN_TOKEN) {
+
+        // Find branch and update it with the request body
+        const data = {};
+        if (req.body.username) {
+            data.username = req.body.username;
+        }
+        if (req.body.password) {
+            data.password = req.body.password;
+        }
+        User.findByIdAndUpdate(req.params.id, data, {new: true})
+          .then(user => {
+              console.log(user, "jhjghj");
+              if(!user) {
+                  return res.status(404).send({
+                      message: "User not found with id " + req.params.id
+                  });
+              }
+              return res.status(200).send({user, message: "You successfully update user!"});
+          }).catch(err => {
+            console.log(err)
+            if(err) {
+                if(err.kind === 'ObjectId') {
+                    return res.status(404).send({
+                        message: "User not found with id " + req.params.id
+                    });
+                }
+                return res.status(500).send({
+                    message: "Error updating user with id " + req.params.id
+                });
+            }
+        });
+    } else {
+        return res.status(401).send({
+            message: "You don’t have permission"
+        });
+    }
+};
+
+exports.delete = (req, res) => {
+    console.log(req.query)
+    if (req.query.token && req.query.token === process.env.SUPERADMIN_TOKEN) {
+        User.findByIdAndRemove(req.params.id)
+          .then(user => {
+              if(!user) {
+                  return res.status(404).send({
+                      message: "User not found with id " + req.params.id
+                  });
+              }
+              return res.status(200).send('User deleted successfully!');
+          }).catch(err => {
+            if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+                return res.status(404).send({
+                    message: "User not found with id " + req.params.id
+                });
+            }
+            return res.status(500).send({
+                message: "Could not delete user with id " + req.params.id
+            });
+        });
+    } else {
+        return res.status(401).send({
+            message: "You don’t have permission"
+        });
+    }
+};
 
 
 
