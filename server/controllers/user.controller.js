@@ -40,14 +40,13 @@ exports.create = (req, res) => {
                 message: "Password can not be empty"
             });
         }
-        // const playlist = new
-        // Create a Branch
+
+
         const user = new User({
             username: req.body.username,
             password: req.body.password,
         });
 
-        // Save Branch in the database
         user.save()
           .then(data => {
               res.send({data, message: "You successfully create new user!"});
@@ -64,52 +63,44 @@ exports.create = (req, res) => {
 };
 
 exports.update = async (req, res) => {
-    if (req.body.token && req.body.token === process.env.SUPERADMIN_TOKEN) {
-
-        // Find branch and update it with the request body
-        const data = {};
-        if (req.body.username) {
-            data.username = req.body.username;
-        }
-        if (req.body.password) {
-            if (req.body.oldpassword) {
-                const user = await User.findById(req.params.id);
-                console.log(user);
-                if(user.password !== req.body.oldpassword) {
-                    return res.status(400).send("Wrong old password.");
-                }
-                data.password = req.body.password;
-            }  else {
-                return res.status(400).send("Old password is required to change password.");
+    const data = {};
+    if (req.body.username) {
+        data.username = req.body.username;
+    }
+    if (req.body.password) {
+        if (req.body.oldpassword) {
+            const user = await User.findById(req.params.id);
+            console.log(user);
+            if(user.password !== req.body.oldpassword) {
+                return res.status(400).send("Wrong old password.");
             }
+            data.password = req.body.password;
+        }  else {
+            return res.status(400).send("Old password is required to change password.");
         }
-        User.findByIdAndUpdate(req.params.id, data, {new: true})
-          .then(user => {
-              console.log(user, "jhjghj");
-              if(!user) {
-                  return res.status(404).send({
-                      message: "User not found with id " + req.params.id
-                  });
-              }
-              return res.status(200).send({user, message: "You successfully update user!"});
-          }).catch(err => {
-            console.log(err)
-            if(err) {
-                if(err.kind === 'ObjectId') {
-                    return res.status(404).send({
-                        message: "User not found with id " + req.params.id
-                    });
-                }
-                return res.status(500).send({
-                    message: "Error updating user with id " + req.params.id
+    }
+    User.findByIdAndUpdate(req.params.id, data, {new: true})
+      .then(user => {
+          console.log(user, "jhjghj");
+          if(!user) {
+              return res.status(404).send({
+                  message: "User not found with id " + req.params.id
+              });
+          }
+          return res.status(200).send({user, message: "You successfully update user!"});
+      }).catch(err => {
+          console.log(err)
+        if(err) {
+            if(err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "User not found with id " + req.params.id
                 });
             }
-        });
-    } else {
-        return res.status(401).send({
-            message: "You don’t have permission"
-        });
-    }
+            return res.status(500).send({
+                message: "Error updating user with id " + req.params.id
+            });
+        }
+      });
 };
 
 exports.delete = (req, res) => {
