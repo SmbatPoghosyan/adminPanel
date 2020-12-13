@@ -27,7 +27,7 @@ exports.list = (req, res) => {
     })
 };
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
     console.log(req.body);
     if(req.body.token && req.body.token === process.env.SUPERADMIN_TOKEN){
         if(!req.body.username) {
@@ -41,6 +41,13 @@ exports.create = (req, res) => {
             });
         }
 
+        const isUser = await User.findOne({username: req.body.username});
+
+        if (isUser) {
+            return res.status(400).send({
+                message: "Username already exist"
+            });
+        }
 
         const user = new User({
             username: req.body.username,
@@ -79,6 +86,16 @@ exports.update = async (req, res) => {
             return res.status(400).send("Old password is required to change password.");
         }
     }
+
+    const isUser = await User.findOne({username: req.body.username});
+
+
+    if (isUser && isUser.id !== req.params.id) {
+        return res.status(400).send({
+            message: "Username already exist"
+        });
+    }
+
     User.findByIdAndUpdate(req.params.id, data, {new: true})
       .then(user => {
           console.log(user, "jhjghj");
