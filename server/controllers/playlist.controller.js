@@ -59,9 +59,9 @@ exports.create = (req, res) => {
                     });
 
 
-                    res.send({ data, message: "You successfully create new playlist!" });
+                    return res.status(200).send({ data, message: "You successfully create new playlist!" });
                 }).catch(err => {
-                    res.status(500).send({
+                    return res.status(500).send({
                         message: err.message || "Some error occurred while creating the playlist."
                     });
                 });
@@ -96,7 +96,7 @@ async function findBranchById(id, withFiles) {
 exports.findBranchePlaylists = async function (req, res) {
     findBranchById(req.params.branchId, req.params.withFiles)
         .then(data => {
-            res.send(data);
+            return res.status(200).send(data);
         })
         .catch(err => {
             if (err.kind === 'ObjectId') {
@@ -126,7 +126,7 @@ exports.findOne = async function (req, res) {
         });
     }
     let files = await File.find({ playlistId: playlist._id });
-    res.send({ playlist, files });
+    return res.status(200).send({ playlist, files });
 };
 
 // Update a playlist identified by the playlistId in the request
@@ -175,7 +175,7 @@ exports.update = (req, res) => {
                         .then()
                         .catch(err => console.log(err))
                 });
-                res.send({ message: "You successfully update playlist!" });
+                return res.status(200).send({ message: "You successfully update playlist!" });
             })
                 .catch(err => {
                     if (err.kind === 'ObjectId' || err.name === 'NotFound') {
@@ -210,7 +210,7 @@ exports.delete = (req, res) => {
                 });
             }
             File.deleteMany({ playlistId: playlist._id }).then(files => {
-                res.send({ message: "Playlist deleted successfully!" });
+                return res.status(200).send({ message: "Playlist deleted successfully!" });
             })
                 .catch(err => {
                     if (err.kind === 'ObjectId' || err.name === 'NotFound') {

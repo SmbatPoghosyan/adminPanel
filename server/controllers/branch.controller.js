@@ -21,9 +21,9 @@ exports.create = (req, res) => {
         // Save Branch in the database
         branch.save()
             .then(data => {
-                res.send({data, message: "You successfully create new branch!"});
+                return res.status(200).send({data, message: "You successfully create new branch!"});
             }).catch(err => {
-            res.status(500).send({
+            return res.status(500).send({
                 message: err.message || "Some error occurred while creating the Branch."
             });
         });
@@ -38,28 +38,13 @@ exports.create = (req, res) => {
 // Retrieve and return all branches from the database.
 exports.findAll = (req, res) => {
         Branch.find().then(branches => {
-            res.send(branches);
-        }).catch(err => {res.status(500).send({
+            return res.status(200).send(branches);
+        }).catch(err => {
+            return res.status(500).send({
                 message: err.message || "Some error occurred while retrieving branches."
             });
         });
 };
-
-function asd(id){
-    Branch.find({_id: id})
-        .then(branches => {
-            if(!branches) {
-                return res.status(400).send({
-                    message: "Branch name can not be empty"
-                });
-            }
-            res.send(branches);
-        }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving branches."
-        });
-    });
-}
 
 async function findBranchById(id){
     let data = [];
@@ -73,7 +58,7 @@ async function findBranchById(id){
 exports.findOne =  (req, res) => {
         findBranchById(req.params.branchId)
         .then(data => {
-            res.send(data)
+            return res.status(200).send(data)
         })
         .catch(err => {
             if(err.kind === 'ObjectId') {
@@ -108,7 +93,7 @@ exports.update = (req, res) => {
                         message: "Branch not found with id " + req.params.branchId
                     });
                 }
-                res.send({message: "You successfully update branch!"});
+                return res.status(200).send({message: "You successfully update branch!"});
             }).catch(err => {
                 console.log(err)
             if(err.kind === 'ObjectId') {
@@ -147,7 +132,7 @@ exports.delete = (req, res) => {
                         })
                     })
                 }
-                res.send({message: "Branch deleted successfully!"});
+                return res.status(200).send({message: "Branch deleted successfully!"});
             })
         }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
