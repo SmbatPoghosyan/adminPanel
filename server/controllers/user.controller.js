@@ -22,7 +22,7 @@ exports.login = (req, res) => {
 };
 
 exports.list = (req, res) => {
-    User.find().then(data => {
+    User.find({ "username": { "$ne": 'superadmin' } }).then(data => {
         return res.send({data, success: true});
     })
 };
