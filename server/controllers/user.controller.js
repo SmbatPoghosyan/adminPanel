@@ -63,7 +63,7 @@ exports.create = (req, res) => {
     }
 };
 
-exports.update = (req, res) => {
+exports.update = async (req, res) => {
     if (req.body.token && req.body.token === process.env.SUPERADMIN_TOKEN) {
 
         // Find branch and update it with the request body
@@ -72,7 +72,16 @@ exports.update = (req, res) => {
             data.username = req.body.username;
         }
         if (req.body.password) {
-            data.password = req.body.password;
+            if (req.body.oldpassword) {
+                const user = await User.findById(req.params.id);
+                console.log(user);
+                if(user.password !== req.body.oldpassword) {
+                    return res.status(400).send("Wrong old password.");
+                }
+                data.password = req.body.password;
+            }  else {
+                return res.status(400).send("Old password is required to change password.");
+            }
         }
         User.findByIdAndUpdate(req.params.id, data, {new: true})
           .then(user => {
