@@ -130,7 +130,7 @@ exports.delete = (req, res) => {
                       message: "User not found with id " + req.params.id
                   });
               }
-              return res.status(200).send('User deleted successfully!');
+              return res.status(200).send({message: 'User deleted successfully!'});
           }).catch(err => {
             if(err.kind === 'ObjectId' || err.name === 'NotFound') {
                 return res.status(404).send({
